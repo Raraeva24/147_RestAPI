@@ -89,6 +89,7 @@ fun KontakLayout (Kontak: List<Kontak>, modifier: Modifier = Modifier) {
 @Composable
 fun KontakCard(
     kontak: Kontak,
+    onDeleteClick: (Kontak) -> Unit = {},
     modifier: Modifier = Modifier
 ) {
     Card(
@@ -102,6 +103,7 @@ fun KontakCard(
         ) {
             Row(
                 modifier = Modifier.fillMaxWidth(),
+
             ) {
                 Text(
                     text = kontak.nama,
