@@ -115,7 +115,7 @@ fun KontakCard(
                 IconButton(onClick = { onDeleteClick(kontak) }) {
                     Icon(
                         imageVector = Icons.Default.Phone,
-                        contentDescription = null
+                        contentDescription = null,
                     )
                 }
                 Text(
