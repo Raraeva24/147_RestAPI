@@ -33,16 +33,27 @@ import com.example.a15desember2023.R
 import com.example.a15desember2023.model.Kontak
 import com.example.a15desember2023.ui.home.viewmodel.KontakUIState
 
+
+
 @Composable
-fun HomeScreen(
-    kontakUIState: KontakUIState, retryAction: ()-> Unit, modifier: Modifier = Modifier
+fun HomeStatus(
+    kontakUIState: KontakUIState,
+    retryAction: ()-> Unit,
+    modifier: Modifier = Modifier,
+    onDeleteClick: (Kontak) -> Unit = {},
+    onDetailClick: (Int) -> Unit
 ) {
     when (kontakUIState) {
         is KontakUIState.Loading -> OnLoading (modifier = modifier.fillMaxSize())
         is KontakUIState.Success -> KontakLayout(
-            Kontak = kontakUIState.kontak, modifier = modifier.fillMaxWidth()
+            Kontak = kontakUIState.kontak, modifier = modifier.fillMaxWidth(),
+        onDetailClick = {
+            onDetailClick(it.id)
+        },
+        onDeleteClick = {
+            onDeleteClick(it)
+        }
         )
-
         is KontakUIState.Error -> OnError(retryAction, modifier = modifier.fillMaxSize())
     }
 }
